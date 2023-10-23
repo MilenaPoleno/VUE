@@ -1,10 +1,5 @@
 <template>
-    <div class="banner">
-        <div class="banner-block">
-            <h1 class="banner-block__header">Articles & News</h1>
-            <p class="banner-block__text">Home / Blog</p>
-        </div>
-    </div>
+    <BannerComponent :info="bannerInfo"/>
     <div class="post">
         <h1 class="post-header">Latest Post</h1>
         <div class="post-block">
@@ -34,33 +29,7 @@
         <div id="app" class="articles-content">
             <CardComponent v-for="item in articles" :key="item.id" :article="item"/>
         </div>
-        <div class="articles-pagination">
-            <div class="articles-pagination__item">
-                <svg width="53" height="52" viewBox="0 0 53 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="26.5" cy="26" r="25.5" stroke="#CDA274" />
-                </svg>
-                <p>01</p>
-            </div>
-            <div class="articles-pagination__item">
-                <svg width="53" height="52" viewBox="0 0 53 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="26.5" cy="26" r="25.5" stroke="#CDA274" />
-                </svg>
-                <p>02</p>
-            </div>
-            <div class="articles-pagination__item">
-                <svg width="53" height="52" viewBox="0 0 53 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="26.5" cy="26" r="25.5" stroke="#CDA274" />
-                </svg>
-                <p>03</p>
-            </div>
-            <div class="articles-pagination__item">
-                <svg width="53" height="52" viewBox="0 0 53 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="26.5" cy="26" r="25.5" stroke="#CDA274" />
-                    <path d="M23.5571 32L29.5 25.3143L23.5571 18.6286" stroke="#292F36" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </div>
-        </div>
+        <PaginationComponent/>
     </div>
     
 </template>
@@ -73,7 +42,11 @@
     import img7 from "../assets/img/article4.png";
     import img8 from "../assets/img/article5.png";
     import img9 from "../assets/img/article6.png";
+    import imgBanner from "../assets/img/articlebanner.png";
+import BannerComponent from "./BannerComponent.vue";
 import CardComponent from "./CardComponent.vue";
+import PaginationComponent from "./PaginationComponent.vue";
+
 export default{
     data() {
         return {
@@ -97,8 +70,13 @@ export default{
                     id: 6, img: img9, rectangle: "Interior Design", header1: "Best For Any Office & Business Interior ", header2: "Solution", date: "25 December,2022"
                 },
             ],
+            bannerInfo:{
+                img: imgBanner,
+                header: "Articles & News",
+                text: "Home / Blog"
+            },
         };
     },
-    components: { CardComponent }
+    components: { CardComponent, BannerComponent, PaginationComponent }
 }
 </script>
